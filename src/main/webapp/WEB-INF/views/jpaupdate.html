@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>JPA Update</h1>
+	<form action="update" method="post">
+		<input type="hidden" name="myno" th:value="${dto.myno}">
+		<table th:object="${dto}">
+			<tr>
+				<th>작성자</th>
+				<td><input type="text" name="myname" th:value="*{myname}" readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>제 목</th>
+				<td><input type="text" name="mytitle" th:value="*{mytitle}"></td>
+			</tr>
+			<tr>
+				<th>내 용</th>
+				<td>
+				<textarea rows="10" cols="40" name="mycontent" th:text="*{mycontent}"></textarea>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="right">
+					<input type="submit" th:value="수정완료">
+				</td>
+			</tr>
+			
+			
+		</table>
+	</form>
+
+</body>
+</html>

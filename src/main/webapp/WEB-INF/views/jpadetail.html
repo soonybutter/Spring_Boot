@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>JPA Detail</h1>
+	<table th:object="${dto}">
+		<tr>
+			<th>작성자</th>
+			<td><input type="text" th:value="*{myname}" readonly="readonly"></td>
+		</tr>
+		<tr>
+			<th>제 목</th>
+			<td><input type="text" th:value="*{mytitle}" readonly="readonly"></td>
+		</tr>
+		<tr>
+			<th>내 용</th>
+			<!--<td><textarea rows="10" cols="40" readonly="readonly" th:text="*{mycontent}"></textarea></td>  -->
+			<td><textarea rows="10" cols="40" readonly="readonly" th:inline="text">[[*{mycontent}]]</textarea></td>
+		</tr>
+		<tr>
+			<td colspan="4" align="right">
+				<input type="button" onclick="location.href='list'" value="목록">
+				<input type="button" th:onclick="|location.href='updateform?myno=*{myno}'|" value="수정">
+				<input type="button" th:onclick="|location.href='delete?myno=*{myno}'|" value="삭제">
+			</td>
+		</tr>
+	</table>
+
+</body>
+</html>
