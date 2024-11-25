@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>utility</h1>
+<!-- 타임리프의 유틸리티 객체 -->
+
+	<p th:text="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm')}"></p>
+	<p th:text="${#numbers.formatInteger(3456.1234,6)}"></p>
+	<p th:text ="${#strings.toUpperCase('hello, springboot & thymeleaf !')}"></p>
+	
+	<a href="/">index</a>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>expression</h1>
+	<p th:text="|Hello, ${name}|">Hello, $name </p>
+	<p th:text="${dto.subject}">dto.subject</p> <!-- 1번 방법 -->
+
+	<div th:object="${dto}"> <!-- 2번 방법 -->
+		<p th:text="*{subject}">subject</p>
+		<p th:text="*{seq}">seq</p> <!-- object에 바인딩 돼있는 seq 객체를 가져오겠다. -->
+		<p th:text="*{name}"></p>
+	</div>
+
+	<hr>
+	<table>
+		<tr>
+			<th>SUBJECT</th>
+			<th>SEQ</th>
+		</tr>
+		<tr th:each="dto:${list}">
+			<td th:text="*{dto.subject}"></td>
+			<td th:text="*{dto.seq}"></td>
+		</tr>
+	</table>
+	
+	<hr>
+	<div th:object="${dto}">
+		<p th:if="*{seq gt 10}">
+			<span>크다</span>
+		</p>
+		<p th:unless="*{seq gt 10}">
+			<span>크지않다</span>
+		</p>
+	</div>
+	
+	<div th:each="num:${#numbers.sequence(1,3)}">
+		<th:block th:switch="${num}">
+			<p th:case="1" th:text="|this is ${num}|"></p>
+			<p th:case="2" th:text="|second is ${num}|"></p>
+			<p th:case="3" th:text="|this is ${num}!!|"></p>
+		</th:block>
+	</div>
+	
+	<a th:href="@{index.html}">index</a> <!-- 링크 처리 -->
+	<a th:href="@{util}">util</a>
+	
+</body>
+</html>
